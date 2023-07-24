@@ -173,7 +173,13 @@ img{
 .log-in{
     position: fixed;
     top: 0;
-    display: block;
+    display: none;
+}
+.log-in .error{
+    color: red;
+    padding: 2px 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 .bong{
     height: 100vh;
@@ -375,7 +381,7 @@ img{
 .main{
     padding: 30px 100px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px; 
 }
 .card-main{
@@ -431,7 +437,7 @@ img{
 .addSP{
     position: fixed;
     top: 0;
-    display: none;
+    display: block;
 }
 #addSP{
     background-color: var(--while-color);
@@ -447,4 +453,11 @@ img{
 }
 #addSP .login-card ,#form-login .login-card{
     margin-top: 25px;
+}
+#danhmuc_addSP{
+    border: 2px solid green;
+    height: 37px;
+    font-size: 1rem;
+    border-radius: 3px;
+    font-weight: 500;
 }

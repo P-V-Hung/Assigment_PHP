@@ -1,15 +1,14 @@
-<!-- <?php
+<?php
     session_start();
     require "../back-end/danhsachsp.php";
     require "../back-end/function.php";
-?> -->
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./font/fontawesome-free-6.4.0-web/css/all.min.css">
     <title>Document</title>
@@ -31,7 +30,16 @@
                     <li class="link"><a href="#"><i class="fa-regular fa-bell"></i> Thông báo</a></li>
                     <li class="link"><a href="#"><i class="fa-solid fa-question"></i> Hỗ trợ</a></li>
                     <li class="link"><a href="#" id="dk">Đăng kí</a></li>
-                    <li class="link"><a href="#" id="dn">Đăng nhập</a></li>
+                    <li class="link">
+                        <?php
+                            if(isset($_SESSION["username"])){
+                                $userLogin = $_SESSION["username"];
+                                echo "<span style='color:white'><i class='fa-solid fa-user'></i> {$userLogin}</span>  <a href='#'id='dx'<i class='fa-solid fa-right-from-bracket'></i></a>";
+                            }else{
+                                echo '<a href="#" id="dn">Đăng nhập</a>' ;
+                            }
+                        ?>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -68,13 +76,13 @@
         </div>
     </section>
     <main class="main">
-        <!-- <?php
+        <?php
             foreach($listSP as $index => $value):
                 $img = $value['img'];
                 $title = $value['title'];
                 $price = $value['price'];
                 $count = $value['count'];
-        ?> -->
+        ?>
         <div class="card-main">
             <a href="#">
                 <div class="card-img">
@@ -92,7 +100,7 @@
                 </div>
             </a>
         </div>
-        <!-- <?php endforeach ?> -->
+        <?php endforeach ?>
     </main>
     <footer class="footer">
 
@@ -111,12 +119,27 @@
                     <input type="text" id="#tdn" name="username" placeholder=" ">
                     <label for="#tdn">Tên đăng nhập</label>
                 </div>
+                <p class="error">
+                    <?php
+                        if(isset($_SESSION["errorusername"])){
+                            $erUserName = $_SESSION["errorusername"];
+                            echo $erUserName;
+                        }
+                    ?>
+                </p>
                 <div class="login-card">
                     <input type="password" name="password" id="pass" placeholder=" ">
                     <label for="pass">Mật khẩu</label>
                     <i class="fa-regular fa-eye"></i>
                 </div>
-                <p class="login-error"></p>
+                <p class="error">
+                    <?php
+                        if(isset($_SESSION["errorpassword"])){
+                            $erUserPass = $_SESSION["errorpassword"];
+                            echo $erUserPass;
+                        }
+                    ?>
+                </p>
                 <div class="login-heap">
                     <a href="#">Cần hỗ trợ</a>
                     <a href="#">Quên mật khẩu <i class="fa-solid fa-question"></i></a>
@@ -215,7 +238,16 @@
                     </div>
                     <div class="login-card">
                         <input type="text" name="count" id="count" placeholder=" ">
-                        <label for="count">Số lượng sẵn có</label>
+                        <label for="count">Số lượng</label>
+                    </div>
+                    <div class="login-card">
+                        <select name="danhmuc" id="danhmuc_addSP">
+                            <option value="">Danh mục</option>
+                            <option value="1">Giầy, dép</option>
+                            <option value="2">Áo quần</option>
+                            <option value="3">Đồ chơi</option>
+                            <option value="4">Đồ linh tinh</option>
+                        </select>
                     </div>                    
                 </footer>
                 <div class="login-btn">

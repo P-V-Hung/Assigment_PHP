@@ -32,17 +32,25 @@ function pre() {
 
 
 // login-form
-let logupLink = $("#dk")
-let loginLink = $("#dn");
-let addsp = $("#addsp");
-let login = $(".log-in");
-let logup = $(".log-up");
-let loginPre = $("#form-login .pre");
-let logupPre = $("#form-logup .pre");
-let loginUp = $("#form-login .header-login span");
-let logupIn = $("#form-logup .header-logup span");
-let addSPPre = $("#addSP .pre");
-let addSP = $(".addSP");
+const logupLink = $("#dk")
+const loginLink = $("#dn");
+const dx = $("#dx");
+const addsp = $("#addsp");
+const login = $(".log-in");
+const logup = $(".log-up");
+const loginPre = $("#form-login .pre");
+const logupPre = $("#form-logup .pre");
+const loginUp = $("#form-login .header-login span");
+const logupIn = $("#form-logup .header-logup span");
+const addSPPre = $("#addSP .pre");
+const addSP = $(".addSP");
+
+// if(dx){
+//     const parenDx = dx.parentElement;
+//     dx.onclick = function(){
+//         parenDx.innerHTML = "<a href='#' id='dn'>Đăng nhập</a>";
+//     }
+// }
 
 addsp.onclick = function(){
     addSP.style.display = "block";
@@ -59,10 +67,14 @@ loginUp.addEventListener("click", function () {
     logup.style.display = "block";
     login.style.display = "none";
 });
-loginLink.addEventListener("click", function () {
-    login.style.display = "block";
-    logup.style.display = "none";
-});
+if(loginLink){
+    loginLink.addEventListener("click", function () {
+        console.log("hello");
+        login.style.display = "block";
+        logup.style.display = "none";
+    });
+}
+
 logupLink.addEventListener("click", function () {
     logup.style.display = "block";
     login.style.display = "none";
